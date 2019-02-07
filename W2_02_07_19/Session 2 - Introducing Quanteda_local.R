@@ -13,7 +13,7 @@
 rm(list = ls())
 
 # Set working directory
-setwd("/Users/pedrorodriguez/Drobox/GitHub/Text-as-Data-Lab-Spring-2019/W2_02_07_19/")
+setwd("/Users/dizhou/Documents/GitHub/Text-as-Data-Lab-Spring-2019/W2_02_07_19/")
 
 # 1.2 Installing quanteda
 
@@ -99,7 +99,8 @@ trump_sotu_corpus <- corpus_subset(data_corpus_sotu, President == "Trump")
 summary(corpus_subset(data_corpus_sotu, President == "Trump"))
 
 # key words in context (KWIC)
-kwic_america <- kwic(trump_sotu_corpus, pattern = "america", valuetype = "regex")
+kwic_america <- kwic(trump_sotu_corpus, pattern = "america", valuetype = "regex", window = 6)
+View(kwic_america)
 
 # keep only the text of the most recent SOTU
 trump_2018_text <- texts(trump_sotu_corpus)[2]
@@ -202,11 +203,11 @@ topfeatures(normalized)
 #-----------------------------
 # bigrams
 
-head(textstat_collocations(trump_2018_sotu))
+head(textstat_collocations(trump_2018_text))
 ?textstat_collocations
 
 # trigrams
-head(textstat_collocations(trump_2018_sotu, size = 3))
+head(textstat_collocations(trump_2018_text, size = 3))
 
 # Are there any other terms you all think are interesting?
 
